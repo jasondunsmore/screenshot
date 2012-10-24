@@ -9,8 +9,7 @@ Required arguments:
   -h  Print this help message.
 
 Examples:
-
-./screenshot -b google-chrome -p jbd:html/shots -u http://jbd.corp.rackspace.com/shots
+./screenshot -b google-chrome -p myhost:html/shots -u http://mydomain.com/shots
 ./screenshot -b google-chrome -p /var/www/html/shots -u file:///var/www/html/shots
 "
 
@@ -35,7 +34,7 @@ while getopts "b:p:u:h" options; do
 done
 
 if [[ -z $browser || -z $path || -z $url ]]; then
-    echo $usage
+    echo "$usage"
     exit 1
 fi
 

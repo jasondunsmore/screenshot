@@ -1,0 +1,36 @@
+* Summary
+
+A tool to enable Easily share screenshots with others.
+
+1) Run screenshot (see [[id:9fb60d16-b897-46c1-90fb-f74311fa2758][Keybinding configuration]])
+2) Select the region of the screen you want to share.
+
+The screenshot is automatically uploaded and then opened in the
+browser window, where you can copy URL.
+
+* Help
+
+: $ ./screenshot -h
+: Usage: ./screenshot [-h] -b BROWSER -p PATH -u URL
+: 
+: Required arguments:
+:   -b  Browser to open screenshot in.
+:   -p  Path to copy screenshot to (eg. /var/www/html or myhost:html/).
+:   -u  URL where screenshot can be accessed.
+:   -h  Print this help message.
+: 
+: Examples:
+: ./screenshot -b google-chrome -p myhost:html/shots -u http://mydomain.com/shots
+: ./screenshot -b google-chrome -p /var/www/html/shots -u file:///var/www/html/shots
+
+* Keybinding configuration
+:PROPERTIES:
+:ID:       9fb60d16-b897-46c1-90fb-f74311fa2758
+:END:
+
+Set up a custom keybinding using [[http://www.nongnu.org/xbindkeys/xbindkeys.html][xbindkeys]], or [[http://www.howtogeek.com/howto/ubuntu/assign-custom-shortcut-keys-on-ubuntu-linux/][gconf-editor]] (Gnome).
+
+xbindkeys example:
+
+: ./screenshot -b google-chrome -p myhost:html/shots -u http://mydomain.com/shots
+:  control + alt + z
