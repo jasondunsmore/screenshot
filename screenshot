@@ -7,6 +7,11 @@ Required arguments:
   -p  Path to copy screenshot to (eg. /var/www/html or myhost:html/).
   -u  URL where screenshot can be accessed.
   -h  Print this help message.
+
+Examples:
+
+./screenshot -b google-chrome -p jbd:html/shots -u http://jbd.corp.rackspace.com/shots
+./screenshot -b google-chrome -p /var/www/html/shots -u file:///var/www/html/shots
 "
 
 while getopts "b:p:u:h" options; do
@@ -43,8 +48,8 @@ scrot -s '%Y-%m-%d-%H%M%S_$wx$h.png' -e 'echo $f > /tmp/last-shot' || exit 1
 # Read the filename into a variable
 last_shot=$(cat /tmp/last-shot)
 
-# Copy the file to the server
+# Copy the file to the provided path
 scp "$last_shot" "$path" || exit 1
 
 # Open the image in the browser
-"$browser" "${url}/$last_shot"
+"$browser" "${url}/${last_shot}"
