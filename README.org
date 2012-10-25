@@ -1,9 +1,10 @@
 * Summary
 
-A tool to enable Easily share screenshots with others.
+Easily share screen captures with others.
 
-1) Run screenshot (see "Keybinding configuration" below)
-2) Select the region of the screen you want to share.
+1) Run screenshot script (see "Keybinding configuration" below)
+2) Either click and drag to select the region of the screen you want
+   to share *OR* click on the window you want to share.
 
 The screenshot is automatically uploaded and then opened in the
 browser window, where you can copy URL.
