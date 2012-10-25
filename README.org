@@ -2,12 +2,14 @@
 
 Easily share screen captures with others.
 
-1) Run screenshot script (see "Keybinding configuration" below)
-2) Either click and drag to select the region of the screen you want
-   to share *OR* click on the window you want to share.
+To use:
 
-The screenshot is automatically uploaded and then opened in the
-browser window, where you can copy URL.
+1) Run the screenshot script (see "Keybinding configuration" below).
+2) Either click and drag to select the region of the screen you want
+   to share *OR* click on the window you want to share.  You can also
+   hit escape to abort the screenshot.
+3) The screenshot is automatically uploaded and then opened in the
+   browser window, where you can copy the URL.
 
 * Help
 
@@ -18,6 +20,7 @@ browser window, where you can copy URL.
 :   -b  Browser to open screenshot in.
 :   -p  Path to copy screenshot to (eg. /var/www/html or myhost:html/).
 :   -u  URL where screenshot can be accessed.
+:   -r  Remove file from /tmp after it's been uploaded.
 :   -h  Print this help message.
 : 
 : Examples:

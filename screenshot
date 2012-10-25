@@ -6,6 +6,7 @@ Required arguments:
   -b  Browser to open screenshot in.
   -p  Path to copy screenshot to (eg. /var/www/html or myhost:html/).
   -u  URL where screenshot can be accessed.
+  -r  Remove file from /tmp after it's been uploaded.
   -h  Print this help message.
 
 Examples:
@@ -13,7 +14,7 @@ Examples:
 ./screenshot -b google-chrome -p /var/www/html/shots -u file:///var/www/html/shots
 "
 
-while getopts "b:p:u:h" options; do
+while getopts "b:p:u:hr" options; do
     case $options in
         b)
             browser=$OPTARG
@@ -23,6 +24,9 @@ while getopts "b:p:u:h" options; do
             ;;
         u)
             url=$OPTARG
+            ;;
+        r)
+            remove=1
             ;;
         h)
             echo "$usage"
@@ -42,13 +46,18 @@ fi
 sleep 0.2
 
 # Capture the screenshot & store the filename
-scrot -s '%Y-%m-%d-%H%M%S_$wx$h.png' -e 'echo $f > /tmp/last-shot' || exit 1
+scrot -s '%Y-%m-%d-%H%M%S_$wx$h.png' -e 'mv $f /tmp && echo $f > /tmp/last-shot' || exit 1
 
 # Read the filename into a variable
 last_shot=$(cat /tmp/last-shot)
 
 # Copy the file to the provided path
-scp "$last_shot" "$path" || exit 1
+scp "/tmp/${last_shot}" "$path" || exit 1
+
+# Clean up
+if [[ "$remove" -eq 1 ]]; then
+    rm -f "/tmp/${last_shot}"
+fi
 
 # Open the image in the browser
 "$browser" "${url}/${last_shot}"
